@@ -55,7 +55,7 @@ To simulate installation:
 
 #### Installation
 
-    npm install -g @flowscropter/ts-example-cli
+    npm install -g @flowscripter/ts-example-cli
     ts-example-cli
 
 ## Further Details
