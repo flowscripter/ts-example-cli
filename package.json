@@ -1,14 +1,14 @@
 {
-    "name": "@flowscripter/ts-template",
+    "name": "@flowscripter/ts-example-cli",
     "version": "0.0.0",
-    "description": "Template TypeScript project.",
+    "description": "Example TypeScript CLI application for the cli-framework.",
     "repository": {
         "type": "git",
-        "url": "https://github.com/flowscripter/ts-template"
+        "url": "https://github.com/flowscripter/ts-example-cli"
     },
-    "homepage": "https://github.com/flowscripter/ts-template",
+    "homepage": "https://github.com/flowscripter/ts-example-cli",
     "bugs": {
-        "url": "https://github.com/flowscripter/ts-template/issues"
+        "url": "https://github.com/flowscripter/ts-example-cli/issues"
     },
     "keywords": [
         "typescript"
@@ -24,59 +24,53 @@
     "publishConfig": {
         "access": "public"
     },
-    "main": "dist/node.js",
-    "browser": "dist/browser.js",
     "type": "module",
     "files": [
         "dist/**/*"
     ],
     "types": "dist/types/index.d.ts",
     "engines": {
-        "node": "12.14.1"
+        "node": "12.11.1"
+    },
+    "bin": {
+        "ts-example-cli": "./bin/ts-example-cli"
     },
     "scripts": {
         "prebuild": "npx rimraf dist",
         "build": "npx rollup -c",
         "watch": "npx rollup -c --watch",
-        "test": "npx jest",
-        "lint": "npx eslint ./src/**/*.ts ./test/**/*.ts",
-        "docs": "npx typedoc --moduleResolution node src"
+        "lint": "npx eslint ./src/**/*.ts",
+        "e2e": "npx jest --config=jest.e2e.config.js",
+        "example-cli": "DEBUG=* NODE_NO_WARNINGS=1 node --experimental-modules dist/node.js"
     },
     "devDependencies": {
-        "@commitlint/cli": "8.3.4",
-        "@commitlint/config-conventional": "8.3.4",
-        "@flowscripter/eslint-config": "1.3.22",
+        "@commitlint/cli": "8.2.0",
+        "@commitlint/config-conventional": "8.2.0",
+        "@flowscripter/eslint-config": "1.3.9",
         "@flowscripter/renovate-config": "1.0.3",
         "@flowscripter/tsconfig": "1.2.0",
-        "@types/debug": "4.1.5",
-        "@types/jest": "24.0.25",
-        "@typescript-eslint/eslint-plugin": "2.15.0",
-        "@typescript-eslint/parser": "2.15.0",
-        "eslint": "6.8.0",
-        "eslint-plugin-import": "2.19.1",
-        "eslint-plugin-jest": "23.3.0",
-        "gulp": "4.0.2",
-        "husky": "3.1.0",
+        "@types/jest": "24.0.18",
+        "@typescript-eslint/eslint-plugin": "2.3.2",
+        "@typescript-eslint/parser": "2.3.2",
+        "eslint": "6.5.1",
+        "eslint-plugin-import": "2.18.2",
+        "eslint-plugin-jest": "22.17.0",
+        "husky": "3.0.7",
         "jest": "24.9.0",
+        "nixt": "0.5.1",
         "rimraf": "3.0.0",
-        "rollup": "1.28.0",
+        "rollup": "1.21.4",
         "rollup-plugin-cleanup": "3.1.1",
         "rollup-plugin-commonjs": "10.1.0",
         "rollup-plugin-eslint": "7.0.0",
-        "rollup-plugin-node-builtins": "2.1.2",
         "rollup-plugin-node-resolve": "5.2.0",
-        "rollup-plugin-peer-deps-external": "2.2.0",
-        "rollup-plugin-typescript2": "0.25.3",
-        "semantic-release": "15.14.0",
-        "sonarqube-scanner": "2.5.0",
+        "rollup-plugin-typescript2": "0.24.3",
+        "semantic-release": "15.13.24",
         "temp-dir": "2.0.0",
-        "ts-jest": "24.3.0",
-        "typedoc": "0.15.6",
-        "typedoc-plugin-external-module-name": "2.1.0",
-        "typescript": "3.7.4"
+        "ts-jest": "24.1.0",
+        "typescript": "3.6.3"
     },
-    "peerDependencies": {
-        "debug": "4.1.1"
-    },
-    "dependencies": {}
+    "dependencies": {
+        "@flowscripter/cli-framework": "1.4.1"
+    }
 }
