@@ -1,8 +1,6 @@
-import builtins from 'rollup-plugin-node-builtins';
 import cleanup from 'rollup-plugin-cleanup';
 import commonjs from 'rollup-plugin-commonjs';
 import { eslint } from 'rollup-plugin-eslint';
-import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import resolve from 'rollup-plugin-node-resolve';
 import typescript from 'rollup-plugin-typescript2';
 import ts from 'typescript';
@@ -11,7 +9,7 @@ import tempDir from 'temp-dir';
 module.exports = [
     {
         input: {
-            node: 'src/index.ts'
+            node: 'src/exampleCli.ts'
         },
         output: {
             dir: 'dist',
@@ -22,12 +20,18 @@ module.exports = [
             include: 'src/**',
         },
         external: [
-            'path',
+            'assert',
+            'crypto',
+            'events',
             'fs',
-            'crypto'
+            'os',
+            'path',
+            'readline',
+            'stream',
+            'tty',
+            'util'
         ],
         plugins: [
-            peerDepsExternal(),
             eslint({
                 include: [
                     'src/**/*.ts'
@@ -41,42 +45,9 @@ module.exports = [
             commonjs(),
             resolve(),
             cleanup({
-                extensions: ['ts']
-            })
-        ]
-    },
-    {
-        input: {
-            browser: 'src/index.ts'
-        },
-        output: {
-            dir: 'dist',
-            format: 'es',
-            sourcemap: true
-        },
-        watch: {
-            include: 'src/**',
-        },
-        plugins: [
-            peerDepsExternal(),
-            eslint({
-                include: [
-                    'src/**/*.ts'
+                extensions: [
+                    'ts'
                 ]
-            }),
-            typescript({
-                typescript: ts,
-                useTsconfigDeclarationDir: true,
-                cacheRoot: `${tempDir}/.rpt2_cache`
-            }),
-            commonjs(),
-            builtins(),
-            resolve({
-                browser: true,
-                preferBuiltins: false
-            }),
-            cleanup({
-                extensions: ['ts']
             })
         ]
     }
