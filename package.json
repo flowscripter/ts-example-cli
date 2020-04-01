@@ -30,7 +30,7 @@
     ],
     "types": "dist/types/index.d.ts",
     "engines": {
-        "node": "12.16.1"
+        "node": "12.11.1"
     },
     "bin": {
         "ts-example-cli": "./bin/ts-example-cli"
