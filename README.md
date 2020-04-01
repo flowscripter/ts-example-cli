@@ -1,5 +1,5 @@
 # ts-example-cli
-[![license](https://img.shields.io/github/license/flowscripter/ts-example-cli.svg)](https://github.com/flowscripter/ts-example-cli/blob/master/LICENSE.md)
+[![license](https://img.shields.io/github/license/flowscripter/ts-example-cli.svg)](https://github.com/flowscripter/ts-example-cli/blob/master/LICENSE)
 [![dependencies](https://img.shields.io/david/flowscripter/ts-example-cli.svg)](https://david-dm.org/flowscripter/ts-example-cli)
 [![travis](https://api.travis-ci.com/flowscripter/ts-example-cli.svg)](https://travis-ci.com/flowscripter/ts-example-cli)
 [![npm](https://img.shields.io/npm/v/@flowscripter/ts-example-cli.svg)](https://www.npmjs.com/package/@flowscripter/ts-example-cli)

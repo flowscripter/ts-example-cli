@@ -30,7 +30,7 @@
     ],
     "types": "dist/types/index.d.ts",
     "engines": {
-        "node": "12.16.1"
+        "node": "12.11.1"
     },
     "bin": {
         "ts-example-cli": "./bin/ts-example-cli"
@@ -71,6 +71,6 @@
         "typescript": "3.8.3"
     },
     "dependencies": {
-        "@flowscripter/cli-framework": "1.4.1"
+        "@flowscripter/cli-framework": "1.4.2"
     }
 }
