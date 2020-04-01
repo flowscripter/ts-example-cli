@@ -13,22 +13,30 @@ describe('CLI test', () => {
     test('invalid command', (done) => {
         nixt()
             .run('./bin/ts-example-cli hello')
-            .stderr(/.*Unused args: hello*/)
-            .stdout(/.*try running*/)
+            .stderr(/.*Unused arg: hello/)
+            .stdout(/.*try running/)
             .end(done);
     });
 
     test('valid command', (done) => {
         nixt()
             .run('./bin/ts-example-cli greeter')
-            .stdout(/.*Hello world*/)
+            .stdout(/.*Hello world/)
             .end(done);
     });
 
     test('valid command with option', (done) => {
         nixt()
             .run('./bin/ts-example-cli greeter --subject you')
-            .stdout(/.*Hello you*/)
+            .stdout(/.*Hello you/)
+            .end(done);
+    });
+
+    test('valid command with invalid option', (done) => {
+        nixt()
+            .run('./bin/ts-example-cli greeter -w')
+            .stdout(/.*try running\?*/)
+            .stderr(/.*Unused arg: -w/)
             .end(done);
     });
 });
