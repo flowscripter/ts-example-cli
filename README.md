@@ -36,11 +36,11 @@ After building, the CLI can be run with:
 
 Then run with with an invalid argument:
 
-    ./bin/ts-example-cli hello
+    ./bin/ts-example-cli foo
 
-Then run with with a valid argument:
+Then run with with valid arguments:
 
-    ./bin/ts-example-cli --hello=world
+    ./bin/ts-example-cli greeter --subject=lovely
 
 To run with debug logging:
 
