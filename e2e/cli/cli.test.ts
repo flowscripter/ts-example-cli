@@ -6,7 +6,7 @@ describe('CLI test', () => {
     test('no argument', (done) => {
         nixt()
             .run('./bin/ts-example-cli')
-            .stdout(/.*try running\?*/)
+            .stdout(/.*Try running\?*/)
             .end(done);
     });
 
@@ -14,7 +14,7 @@ describe('CLI test', () => {
         nixt()
             .run('./bin/ts-example-cli hello')
             .stderr(/.*Unused arg: hello/)
-            .stdout(/.*try running/)
+            .stdout(/.*Try running/)
             .end(done);
     });
 
@@ -35,7 +35,7 @@ describe('CLI test', () => {
     test('valid command with invalid option', (done) => {
         nixt()
             .run('./bin/ts-example-cli greeter -w')
-            .stdout(/.*try running\?*/)
+            .stdout(/.*Try running\?*/)
             .stderr(/.*Unused arg: -w/)
             .end(done);
     });
