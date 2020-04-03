@@ -14,9 +14,13 @@ export default class ExampleCommandFactory implements CommandFactory {
     public getCommands(): Iterable<Command> {
         return [{
             name: 'greeter',
+            description: 'The classic example',
             options: [{
                 name: 'subject',
-                defaultValue: 'world'
+                defaultValue: 'world',
+                description: 'Who to greet',
+                shortAlias: 's',
+                isOptional: true
             }],
             positionals: [],
             run: async (commandArgs: CommandArgs, context: Context): Promise<void> => {
@@ -24,7 +28,7 @@ export default class ExampleCommandFactory implements CommandFactory {
                 if (printer == null) {
                     throw new Error('STDOUT_PRINTER_SERVICE not available in context');
                 }
-                printer.info(`Hello ${commandArgs.subject}`);
+                printer.info(`Hello ${commandArgs.subject}\n`);
             }
         } as SubCommand];
     }
