@@ -34,11 +34,11 @@ After building, the CLI can be run with:
 
     ./bin/ts-example-cli
 
-Then run with with an invalid argument:
+Then run with an invalid argument:
 
     ./bin/ts-example-cli foo
 
-Then run with with valid arguments:
+Then run with valid arguments:
 
     ./bin/ts-example-cli greeter --subject=lovely
 
@@ -57,6 +57,20 @@ To simulate installation:
 
     npm install -g @flowscripter/ts-example-cli
     ts-example-cli
+
+#### Example Plugin Support
+
+Install a sample plugin:
+
+    ts-example-cli plugin:add ts-example-cli-plugin
+
+View the new commands available:
+
+    ts-example-cli help
+
+Use the new plugin:
+
+    ts-example-cli cat
 
 ## Further Details
 

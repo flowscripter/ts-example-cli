@@ -24,7 +24,7 @@ export default class ExampleCommandFactory implements CommandFactory {
             }],
             positionals: [],
             run: async (commandArgs: CommandArgs, context: Context): Promise<void> => {
-                const printer = context.getService(STDOUT_PRINTER_SERVICE) as unknown as Printer;
+                const printer = context.serviceRegistry.getServiceById(STDOUT_PRINTER_SERVICE) as unknown as Printer;
                 if (printer == null) {
                     throw new Error('STDOUT_PRINTER_SERVICE not available in context');
                 }
