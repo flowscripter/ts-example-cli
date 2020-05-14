@@ -5,3 +5,4 @@ dist
 reports
 docs
 /ts-example-cli.iml
+/ts-example-cli-plugins/

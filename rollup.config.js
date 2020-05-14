@@ -29,7 +29,16 @@ module.exports = [
             'readline',
             'stream',
             'tty',
-            'util'
+            'util',
+            'http',
+            'https',
+            'zlib',
+            'url',
+            'string_decoder',
+            'events',
+            'buffer',
+            'constants',
+            'readable-stream'
         ],
         plugins: [
             eslint({
