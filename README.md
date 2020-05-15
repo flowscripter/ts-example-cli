@@ -6,8 +6,6 @@
 
 > Example TypeScript CLI application for the [cli-framework](https://github.com/flowscripter/cli-framework).
 
-## Overview
-
 ## Development
 
 Firstly:
