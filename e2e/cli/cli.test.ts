@@ -58,8 +58,8 @@ describe('CLI test', () => {
     test('incorrectly typed command name arg for help command', (done) => {
         nixt({ colors: false })
             .run('./bin/ts-example-cli help greetes')
-            .stdout(/.*Possible matches: greeter\?*/)
-            .stdout(/.*Unknown command: greetes\?*/)
+            .stderr(/.*Possible matches: greeter\?*/)
+            .stderr(/.*Unknown command: greetes\?*/)
             .stdout(/.*Usage\?*/)
             .code(0)
             .end(done);
