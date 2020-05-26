@@ -4,12 +4,13 @@ import nixt from 'nixt';
 import fs from 'fs';
 import os from 'os';
 
-const executable = path.join('bin', os.platform() === 'win32' ? 'ts-example-cli.bat' : 'ts-example-cli');
+const executable = os.platform() === 'win32' ? 'ts-example-cli.bat' : './ts-example-cli';
 
 describe('CLI test', () => {
 
     test('no argument', (done) => {
         nixt({ colors: false })
+            .cwd('bin')
             .run(executable)
             .stdout(/.*Try running\?*/)
             .code(0)
@@ -18,6 +19,7 @@ describe('CLI test', () => {
 
     test('invalid command', (done) => {
         nixt({ colors: false })
+            .cwd('bin')
             .run(`${executable} hello`)
             .stderr(/.*Unused arg: hello/)
             .stdout(/.*Try running/)
@@ -27,6 +29,7 @@ describe('CLI test', () => {
 
     test('valid command', (done) => {
         nixt({ colors: false })
+            .cwd('bin')
             .run(`${executable} greeter`)
             .stdout(/.*Hello world/)
             .code(0)
@@ -35,6 +38,7 @@ describe('CLI test', () => {
 
     test('valid command with option', (done) => {
         nixt({ colors: false })
+            .cwd('bin')
             .run(`${executable} greeter --subject you`)
             .stdout(/.*Hello you/)
             .code(0)
@@ -43,6 +47,7 @@ describe('CLI test', () => {
 
     test('valid command with invalid option', (done) => {
         nixt({ colors: false })
+            .cwd('bin')
             .run(`${executable} greeter -w`)
             .stdout(/.*Hello world/)
             .stderr(/.*Unused arg: -w/)
@@ -52,6 +57,7 @@ describe('CLI test', () => {
 
     test('correctly typed command name arg for help command', (done) => {
         nixt({ colors: false })
+            .cwd('bin')
             .run(`${executable} help greeter`)
             .stdout(/.*The classic example\?*/)
             .code(0)
@@ -60,6 +66,7 @@ describe('CLI test', () => {
 
     test('incorrectly typed command name arg for help command', (done) => {
         nixt({ colors: false })
+            .cwd('bin')
             .run(`${executable} help greetes`)
             .stderr(/.*Possible matches: greeter\?*/)
             .stderr(/.*Unknown command: greetes\?*/)
@@ -79,6 +86,7 @@ describe('CLI test', () => {
         try {
             await new Promise((resolve, reject) => {
                 nixt({ colors: false })
+                    .cwd('bin')
                     .run(`${executable} help cat`)
                     .stdout(/.*Unknown command: cat\?*/)
                     .stdout(/.*Usage\?*/)
@@ -93,6 +101,7 @@ describe('CLI test', () => {
             });
             await new Promise((resolve, reject) => {
                 nixt({ colors: false })
+                    .cwd('bin')
                     .run(`${executable} plugin:add ts-example-cli-plugin`)
                     .stderr(/.*Added\?*/)
                     .code(0)
@@ -106,6 +115,7 @@ describe('CLI test', () => {
             });
             await new Promise((resolve, reject) => {
                 nixt({ colors: false })
+                    .cwd('bin')
                     .run(`${executable} plugin:add ts-example-cli-plugin`)
                     .code(0)
                     .end((err: Error) => {
@@ -118,6 +128,7 @@ describe('CLI test', () => {
             });
             await new Promise((resolve, reject) => {
                 nixt({ colors: false })
+                    .cwd('bin')
                     .run(`${executable} help`)
                     .stdout(/.*cat\?*/)
                     .stdout(/.*dog\?*/)
@@ -131,6 +142,7 @@ describe('CLI test', () => {
             });
             await new Promise((resolve, reject) => {
                 nixt({ colors: false })
+                    .cwd('bin')
                     .run(`${executable} cat`)
                     .stdout(/.*Miaow world\?*/)
                     .end((err: Error) => {
@@ -143,6 +155,7 @@ describe('CLI test', () => {
             });
             await new Promise((resolve, reject) => {
                 nixt({ colors: false })
+                    .cwd('bin')
                     .run(`${executable} plugin:remove ts-example-cli-plugin`)
                     .stdout(/.*Removed\?*/)
                     .end((err: Error) => {
@@ -155,6 +168,7 @@ describe('CLI test', () => {
             });
             await new Promise((resolve, reject) => {
                 nixt({ colors: false })
+                    .cwd('bin')
                     .run(`${executable} help cat`)
                     .stderr(/.*Unknown command: cat\?*/)
                     .stdout(/.*Usage\?*/)
