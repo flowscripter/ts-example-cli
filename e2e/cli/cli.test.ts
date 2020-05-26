@@ -78,7 +78,6 @@ describe('CLI test', () => {
                 nixt({ colors: false })
                     .run('./bin/ts-example-cli help cat')
                     .stdout(/.*Unknown command: cat\?*/)
-                    // .stderr(/.*Unknown command: cat\?*/)
                     .stdout(/.*Usage\?*/)
                     .code(0)
                     .end((err: Error) => {
@@ -92,7 +91,6 @@ describe('CLI test', () => {
             await new Promise((resolve, reject) => {
                 nixt({ colors: false })
                     .run('./bin/ts-example-cli plugin:add ts-example-cli-plugin')
-                    // .stdout(/.*Added\?*/)
                     .stderr(/.*Added\?*/)
                     .code(0)
                     .end((err: Error) => {
@@ -106,7 +104,6 @@ describe('CLI test', () => {
             await new Promise((resolve, reject) => {
                 nixt({ colors: false })
                     .run('./bin/ts-example-cli plugin:add ts-example-cli-plugin')
-                    // .stdout(/.*Already added\?*/)
                     .code(0)
                     .end((err: Error) => {
                         if (err) {

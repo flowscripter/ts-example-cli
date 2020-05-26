@@ -26,23 +26,25 @@ E2E test: `npm run e2e`
 
 ## Run with Node (12.6.0+)
 
+**NOTE**: End-to-end testing is only performed on MacOS and Linux (not Windows).
+
 #### Running From Source
 
 After building, the CLI can be run with:
 
-    ./bin/ts-example-cli
+    bin/ts-example-cli
 
 Then run with an invalid argument:
 
-    ./bin/ts-example-cli foo
+    bin/ts-example-cli foo
 
 Then run with valid arguments:
 
-    ./bin/ts-example-cli greeter --subject=lovely
+    bin/ts-example-cli greeter --subject=lovely
 
 To run with debug logging:
 
-    DEBUG=* NODE_NO_WARNINGS=1 ./bin/ts-example-cli
+    DEBUG=* NODE_NO_WARNINGS=1 bin/ts-example-cli
 
 #### Simulated Installation
 
