@@ -26,10 +26,7 @@ E2E test: `npm run e2e`
 
 ## Run with Node (12.6.0+)
 
-**NOTE**: When running on Windows, all examples below should replace:
-
-* `./bin/ts-example-cli` with `bin\ts-example-cli.bat`
-* `ts-example-cli` with `ts-example-cli.bat`
+**NOTE**: End-to-end testing is only performed on MacOS and Linux (not Windows).
 
 #### Running From Source
 
