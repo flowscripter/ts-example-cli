@@ -1,6 +1,5 @@
 import cleanup from 'rollup-plugin-cleanup';
 import commonjs from 'rollup-plugin-commonjs';
-import { eslint } from 'rollup-plugin-eslint';
 import resolve from 'rollup-plugin-node-resolve';
 import typescript from 'rollup-plugin-typescript2';
 import ts from 'typescript';
@@ -41,11 +40,6 @@ module.exports = [
             'readable-stream'
         ],
         plugins: [
-            eslint({
-                include: [
-                    'src/**/*.ts'
-                ]
-            }),
             typescript({
                 typescript: ts,
                 useTsconfigDeclarationDir: true,
