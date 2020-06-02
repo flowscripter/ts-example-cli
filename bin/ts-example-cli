@@ -7,7 +7,7 @@ self=$(
         cd "${self%/*}" || exit
         self=$(readlink "${self}")
     done
-    cd "${self%/*}"
+    cd "${self%/*}" || exit
     pwd -P
 )
 
