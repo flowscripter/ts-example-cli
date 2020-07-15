@@ -1,8 +1,48 @@
-import { NodeCLI, PLUGIN_REGISTRY_SERVICE } from '@flowscripter/cli-framework';
-import ExampleCommandFactory from './ExampleCommandFactory';
+import {
+    PLUGIN_REGISTRY_SERVICE,
+    STDOUT_PRINTER_SERVICE,
+    BaseNodeCLI,
+    Command,
+    CommandArgs,
+    Context,
+    MultiCommandHelpGlobalCommand,
+    MultiCommandHelpSubCommand,
+    PluginManagerConfig,
+    Printer,
+    PrompterService,
+    StderrPrinterService,
+    StdoutPrinterService,
+    SubCommand,
+    UsageCommand,
+    VersionCommand
+} from '@flowscripter/cli-framework';
+
+const helpGlobalCommand = new MultiCommandHelpGlobalCommand();
+const usageCommand = new UsageCommand(helpGlobalCommand);
+
+function getCommand(): Command {
+    return {
+        name: 'greeter',
+        description: 'The classic example',
+        options: [{
+            name: 'subject',
+            defaultValue: 'world',
+            description: 'Who to greet',
+            shortAlias: 's',
+            isOptional: true
+        }],
+        positionals: [],
+        run: async (commandArgs: CommandArgs, context: Context): Promise<void> => {
+            const printer = context.serviceRegistry.getServiceById(STDOUT_PRINTER_SERVICE) as unknown as Printer;
+            if (printer == null) {
+                throw new Error('STDOUT_PRINTER_SERVICE not available in context');
+            }
+            printer.info(`Hello ${commandArgs.subject}\n`);
+        }
+    } as SubCommand;
+}
 
 (async (): Promise<void> => {
-
     // Provide PluginRegistry custom config to use a custom package install location
     // and force a module scope
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -10,11 +50,18 @@ import ExampleCommandFactory from './ExampleCommandFactory';
     serviceConfigs.set(PLUGIN_REGISTRY_SERVICE, {
         moduleScope: '@flowscripter',
         pluginLocation: '/tmp/ts-example-cli-plugins'
-    });
+    } as PluginManagerConfig);
 
-    const nodeCli: NodeCLI = new NodeCLI('ts-example-cli', serviceConfigs, new Map());
-
-    nodeCli.addCommandFactory(new ExampleCommandFactory());
+    const nodeCli = new BaseNodeCLI([
+        new StderrPrinterService(90),
+        new StdoutPrinterService(90),
+        new PrompterService(90)
+    ], [
+        helpGlobalCommand,
+        new MultiCommandHelpSubCommand(),
+        new VersionCommand(),
+        getCommand()
+    ], serviceConfigs, new Map(), 'ts-example-cli', usageCommand, usageCommand);
 
     await nodeCli.execute();
 })();
