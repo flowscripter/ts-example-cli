@@ -30,7 +30,7 @@
     ],
     "types": "dist/types/index.d.ts",
     "engines": {
-        "node": "12.18.2"
+        "node": ">=14.4.0"
     },
     "bin": {
         "ts-example-cli": "./bin/ts-example-cli"
@@ -40,7 +40,7 @@
         "build": "npx rollup -c",
         "watch": "npx rollup -c --watch",
         "lint": "npx eslint ./src/**/*.ts",
-        "e2e": "npx jest --config=jest.e2e.config.js",
+        "e2e": "npx jest --config=jest.e2e.config.json",
         "example-cli": "DEBUG=* NODE_NO_WARNINGS=1 node --experimental-modules dist/node.js"
     },
     "devDependencies": {
