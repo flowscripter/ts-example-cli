@@ -54,7 +54,7 @@
         "@typescript-eslint/parser": "3.7.1",
         "eslint": "7.5.0",
         "eslint-plugin-import": "2.22.0",
-        "eslint-plugin-jest": "23.18.2",
+        "eslint-plugin-jest": "23.19.0",
         "husky": "4.2.5",
         "jest": "26.1.0",
         "nixt": "0.5.1",
