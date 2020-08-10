@@ -56,7 +56,7 @@
         "eslint-plugin-import": "2.22.0",
         "eslint-plugin-jest": "23.20.0",
         "husky": "4.2.5",
-        "jest": "26.2.2",
+        "jest": "26.3.0",
         "nixt": "0.5.1",
         "rimraf": "3.0.2",
         "rollup": "2.23.1",
