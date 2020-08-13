@@ -70,6 +70,6 @@
         "typescript": "3.9.7"
     },
     "dependencies": {
-        "@flowscripter/cli-framework": "5.4.10"
+        "@flowscripter/cli-framework": "5.4.11"
     }
 }
