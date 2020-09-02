@@ -49,7 +49,7 @@
         "@flowscripter/eslint-config": "1.3.62",
         "@flowscripter/renovate-config": "1.0.3",
         "@flowscripter/tsconfig": "1.2.0",
-        "@types/jest": "26.0.12",
+        "@types/jest": "26.0.13",
         "@typescript-eslint/eslint-plugin": "3.10.1",
         "@typescript-eslint/parser": "3.10.1",
         "eslint": "7.8.1",
