@@ -55,7 +55,7 @@
         "eslint": "7.8.1",
         "eslint-plugin-import": "2.22.0",
         "eslint-plugin-jest": "24.0.0",
-        "husky": "4.2.5",
+        "husky": "4.3.0",
         "jest": "26.4.2",
         "nixt": "0.5.1",
         "rimraf": "3.0.2",
